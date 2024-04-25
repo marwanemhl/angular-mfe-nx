@@ -1,1 +1,17 @@
-<app-nx-welcome></app-nx-welcome> <router-outlet></router-outlet>
+<div class="container">
+  <ng-container #headerPlaceHolder></ng-container>
+</div>
+<div class="flex">
+  <div class="section_a">
+    <div class="section-a-container">
+      section A
+      <ul>
+        <li><a routerLink="section-b">section B</a></li>
+        <li><a routerLink="section-c">section C</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="section_b_c">
+    <router-outlet></router-outlet>
+  </div>
+</div>

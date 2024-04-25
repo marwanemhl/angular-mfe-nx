@@ -1,0 +1,10 @@
+{
+  "name": "remote-section-b-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/remote-section-b-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["remote-section-b"],
+  "// targets": "to see all targets run: nx show project remote-section-b-e2e --web",
+  "targets": {}
+}

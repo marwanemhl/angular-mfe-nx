@@ -7,21 +7,31 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@nx/angular:webpack-browser",
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/angular-mfe-nx",
         "index": "apps/angular-mfe-nx/src/index.html",
         "main": "apps/angular-mfe-nx/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/angular-mfe-nx/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/angular-mfe-nx/src/favicon.ico",
           "apps/angular-mfe-nx/src/assets"
         ],
-        "styles": ["apps/angular-mfe-nx/src/styles.scss"],
-        "scripts": []
+        "styles": [
+          "apps/angular-mfe-nx/src/styles.scss"
+        ],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/angular-mfe-nx/webpack.config.js"
+        },
+        "commonChunk": false
       },
       "configurations": {
         "production": {
@@ -37,7 +47,10 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/angular-mfe-nx/webpack.prod.config.js"
+          }
         },
         "development": {
           "buildOptimizer": false,
@@ -51,7 +64,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nx/angular:dev-server",
       "configurations": {
         "production": {
           "buildTarget": "angular-mfe-nx:build:production"
@@ -60,12 +73,17 @@
           "buildTarget": "angular-mfe-nx:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4200,
+        "publicHost": "http://localhost:4200"
+      }
     },
     "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "executor": "ngx-build-plus:extract-i18n",
       "options": {
-        "buildTarget": "angular-mfe-nx:build"
+        "buildTarget": "angular-mfe-nx:build",
+        "extraWebpackConfig": "apps/angular-mfe-nx/webpack.config.js"
       }
     },
     "lint": {
@@ -73,7 +91,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/angular-mfe-nx/jest.config.ts"
       }

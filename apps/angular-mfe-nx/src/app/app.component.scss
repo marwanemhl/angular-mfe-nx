@@ -1,0 +1,28 @@
+.flex {
+  display: flex;
+  height: 90%;
+}
+.section_a {
+  width: 20%;
+  height: 100%;
+}
+.section_b_c {
+  height: 100%;
+  width: 100%;
+}
+.section_b {
+  height: 50%;
+}
+.section_c {
+  height: 50%;
+}
+.section-a-container {
+  text-align: center;
+  border: dashed 1rem blue;
+  box-sizing: border-box;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  font-weight: bolder;
+}
